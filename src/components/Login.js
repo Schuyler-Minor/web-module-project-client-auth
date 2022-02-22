@@ -10,7 +10,8 @@ export default function Login(props) {
   const { login } = props;
 
   const onChange = (evt) => {
-    const { value } = evt.target;
+    const { id, value } = evt.target;
+    setValues({ ...values, [id]: value });
   };
 
   const onSubmit = (evt) => {
@@ -20,8 +21,19 @@ export default function Login(props) {
   return (
     <form onSubmit={onSubmit}>
       <h2>Login</h2>
-      <input id="username" maxLength={20} placeholder="Enter username" />
-      <input placeholder="password" />
+      <input
+        value={values.username}
+        onChange={onChange}
+        id="username"
+        maxLength={20}
+        placeholder="Enter username"
+      />
+      <input
+        value={values.password}
+        onChange={onChange}
+        placeholder="password"
+        id="password"
+      />
       <button>Submit</button>
     </form>
   );
